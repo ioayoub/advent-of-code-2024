@@ -12,6 +12,7 @@ const doDontRegex = /(do\(\)|don't\(\))/;
 const mulRegex = /mul\((\d+),(\d+)\)/g;
 
 let isEnabled = true;
+
 input.split(doDontRegex).forEach((chunk): void => {
   if (chunk === "do()") isEnabled = true;
   if (chunk === "don't()") isEnabled = false;

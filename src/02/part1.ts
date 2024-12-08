@@ -6,12 +6,11 @@ const rows = input.split("\n");
 
 let safeResults = 0;
 
-const checkIfItsSafe = (arr: number[]): string => {
+export const checkIfItsSafe = (arr: number[]): string => {
   for (let i = 0; i < arr.length - 1; i++) {
     const diff = Math.abs(arr[i] - arr[i + 1]);
 
     if (diff > 3) {
-      console.log(arr[i] - arr[i + 1], "diff more than 3");
       return "Unsafe";
     }
 
@@ -23,10 +22,7 @@ const checkIfItsSafe = (arr: number[]): string => {
       (arr[0] < arr[1] && arr[i] >= arr[i + 1]) ||
       (arr[0] >= arr[1] && arr[i] <= arr[i + 1])
     ) {
-      console.log(
-        arr[0] < arr[1] ? "increase" : "decrease",
-        arr[i] - arr[i + 1]
-      );
+    
       return "Unsafe";
     }
   }

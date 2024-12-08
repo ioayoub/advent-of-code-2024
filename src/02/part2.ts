@@ -19,6 +19,8 @@ const isSafe = (arr: number[]): boolean => {
   let isIncreasing: boolean = arr[0] < arr[1];
 
   for (let i: number = 1; i < arr.length; i++) {
+    console.log(Math.abs(arr[i] - arr[i - 1]) > 3);
+
     if (
       Math.abs(arr[i] - arr[i - 1]) > 3 ||
       (isIncreasing && arr[i] <= arr[i - 1]) ||
@@ -50,15 +52,16 @@ const removeElement = (arr: number[], index: number) => [
  * @param arr - The array of numbers to check.
  * @returns A string "Safe" if the array or any of its subarrays (with one element removed) is safe, otherwise "Unsafe".
  */
-const checkIfItsSafe = (arr: number[]): string => {
-  if (isSafe(arr)) {
-    return "Safe";
+export const checkIfItsSafe = (arr: number[]): string => {
+  if (!isSafe(arr)) {
+    return "Unsafe";
   }
+
+  let newArr = [];
 
   // recursively check if the array is safe after removing each element
   for (let i = 0; i < arr.length; i++) {
-    const newArr = removeElement(arr, i);
-
+    newArr = removeElement(arr, i);
     if (isSafe(newArr)) {
       return "Safe";
     }
@@ -67,12 +70,14 @@ const checkIfItsSafe = (arr: number[]): string => {
   return "Unsafe";
 };
 
-rows.forEach((r) => {
-  const currentRow = r.split(" ").map(Number);
-  const result = checkIfItsSafe(currentRow);
-  if (result === "Safe") {
-    safeResults++;
-  }
-});
+console.log(checkIfItsSafe([1, 2, 6, 3]));
+
+// rows.forEach((r) => {
+//   const currentRow = r.split(" ").map(Number);
+//   const result = checkIfItsSafe(currentRow);
+//   if (result === "Safe") {
+//     safeResults++;
+//   }
+// });
 
 console.log(safeResults);

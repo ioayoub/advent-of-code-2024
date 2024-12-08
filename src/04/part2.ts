@@ -20,7 +20,6 @@ for (let i = 1; i < rows.length - 1; i++) {
       const firstMas = rows[i - 1][j - 1] + rows[i][j] + rows[i + 1][j + 1];
       const secondMas = rows[i - 1][j + 1] + rows[i][j] + rows[i + 1][j - 1];
 
-      console.log(firstMas);
 
       if (isMatch(firstMas) && isMatch(secondMas)) {
         sum++;
